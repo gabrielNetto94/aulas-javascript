@@ -18,7 +18,7 @@ function validaForm(){
     }else{
         alert(nome.value);
     }
-
+    
     
 }
 /*
