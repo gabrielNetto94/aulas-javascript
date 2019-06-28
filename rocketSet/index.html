@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>teste</title>
+</head>    
+    <body>
+        <script>
+            /*INICIO
+            var sexo = 'm';
+             //exemplo de retorno true ou false
+            var r = (sexo === 'm') ? true : false;
+            
+            console.log(r);
+            //ou
+             console.log(r = (sexo === 'm') ? true : false)
+            FIM*/
+           
+            /*INICIO
+            //laço de repetição
+           
+            var j = 100;
+            while(j < 100){
+                console.log(j);
+                j++;
+            }
+
+            for(var i=0;i<10;i++){
+                 console.log(i);
+            }
+            FIM*/
+            
+            /* INICIO
+            function print(){
+                console.log("oi");
+            }
+            //neste caso ela é executada de 1 em 1s
+            setInterval(print,1000);
+            //se usar os "()" ele passa a função como parâmetro 
+            setInterval(print(),1000);
+
+            //espera um determinado tempo para executar 1x o método
+            setTimeout(print,3000);
+            
+            function showAlert(){
+                alert("You pressed the button!");
+            }            
+            function mouse(){
+                console.log("passou em cimade mim!");
+            }
+        FIM*/
+        </script>
+
+        <div id="app">
+            <!--<button onmouseover="mouse()" onclick="showAlert()">PUSH!</button>-->
+            <input class="classe" type="text" id="name" name="nome"/>
+            <input class="classe" type="text" id="name1" name="nome"/>
+            <button class="botao">Adicionar</button> 
+        </div>
+        
+        <script>
+
+        
+        //busca o elemento pelo ID
+        var inputElement = document.getElementById('name');
+        console.log('getElementBydId -> ');
+        console.log(inputElement);
+        
+        // "percorre o documento procurando pelo que deseja, no caso o input"
+        inputElement = document.querySelector('div#app input');
+        
+        //busca todos os inputs, retornando uma lista de input's
+        inputElement = document.querySelectorAll('input');
+        console.log('querySelectoAll ->');
+        console.log(inputElement);
+            
+        /*
+        //pega input name || type || class retornando uma lista dos encontrados
+        //com o querySelectorAll ou apenas 1 elemento com o querySelector
+        inputElement = document.querySelector('input[name=nome]');
+        inputElement = document.querySelectorAll('input[type=text]');
+        inputElement = document.querySelectorAll('input[class=classe]');
+        console.log("input[name=nome]");
+        console.log(inputElement);
+        */
+
+        //pega elemento do tipo button da classe botao
+        var btnElement = document.querySelector('button.botao');
+
+        btnElement.onclick = function(){
+            var text = inputElement.value;
+            alert(text);
+        }
+        
+        </script>
+
+    </body>
+</html>

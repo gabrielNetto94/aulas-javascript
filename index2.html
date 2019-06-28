@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>    
+<body>
+    
+    <div id="app">
+        
+        <label>Nome:</label>
+        <input id="nome"/>
+        <button id="btn" onClick="printNome()">clica</button>
+        <br>
+        <Label>Nome Digitado: </Label>
+        <br>
+        <label id="nameTyped"></label> 
+    </div>
+    
+    <script>
+        
+        function printNome(){
+            //pega o que foi digitado no id nome, que é um input
+            var nome = document.getElementById('nome')
+            //printa no label de id nameTyped o que foi digitado no nome
+            document.getElementById("nameTyped").innerHTML = nome.value;
+        }
+        
+        
+        //linkElement receve a que é o link do html
+        var linkElement = document.createElement('a');
+        
+        //seta o atributo de href com um link
+        linkElement.setAttribute('href','https://www.google.com');
+        
+        //textElement recebe um nodo "acessar"
+        var textElement = document.createTextNode('acessar');
+        //adiciona o filho textElement no linkElement
+        linkElement.appendChild(textElement);
+        
+        //cria um container que recebe a div #app
+        var containerElement = document.querySelector('#app');
+        //adiciona no container o linkElment
+        containerElement.appendChild(linkElement);
+        
+        var inputElement = document.querySelector('#nome');
+        //containerElement.removeChild(inputElement);        
+                
+    </script>
+</body>
+</html>

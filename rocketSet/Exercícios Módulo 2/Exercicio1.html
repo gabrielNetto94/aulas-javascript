@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercício 1 Módulo 2</title>        
+    
+    </head>
+    <body>
+                
+        <button>Create New Circle</button>
+        <div id="app"></div>
+
+        <script>
+            var buttonElement = document.querySelector('button');
+            buttonElement.onclick = function(){
+
+                //cria o elemento div
+                var newElement = document.createElement('div');
+                //seta id=circle, não é necessário
+                newElement.setAttribute('id','circle');
+                
+                newElement.style.height = '50px';
+                newElement.style.width = '50px';
+                newElement.style.backgroundColor = '#555';
+                newElement.style.borderRadius = '50%';
+                
+                var containerElement = document.querySelector('#app');
+                containerElement.appendChild(newElement);
+
+            }
+        </script>
+    </body>
+</html>
+
