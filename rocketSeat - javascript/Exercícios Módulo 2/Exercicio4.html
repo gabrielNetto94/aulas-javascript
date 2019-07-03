@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercício 1 Módulo 2</title>        
+    
+    </head>
+    <body>
+
+        <input type="text" name="nome">
+        <button onClick="adicionar()">ADD</button>
+        <ul></ul>
+
+        <script>
+          var nomes = ["Diego", "Gabriel", "Lucas"]; 
+          var ulElement = document.querySelector('ul');
+
+          function renderList(){
+            for(nome of nomes){            
+              
+            var liElement = document.createElement('li');
+            var textElement = document.createTextNode(nome);
+
+            liElement.appendChild(textElement);
+            ulElement.appendChild(liElement);
+            }  
+          }
+          
+          function adicionar(){
+            var inputElement = document.querySelector('input');
+            nomes.push(inputElement.value);
+            ulElement.innerHTML = '';
+
+             renderList();
+          }
+          renderList();
+
+        </script>
+    </body>
+</html>
