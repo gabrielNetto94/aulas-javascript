@@ -3,13 +3,27 @@ const router = express.Router();
 const Users = require('../model/users');
 const bcrypt = require('bcrypt');
 
+
+router.get('/',async (req,res) =>{
+    
+    try{
+        const users = await Users.find({});
+        return res.send(users);
+
+    }catch (err){
+        return res.send(err);
+    }
+});
+
+/*
 router.get('/',(req,res) =>{
     Users.find({},(err,data)=>{
         if(err) return res.send({error:'Error to find users!'});
         return res.send(data);
     });
 });
-
+*/
+/*
 //creates the user and returns what was created, but don't return the password
 router.post('/create', (req,res) =>{
     const {email, password} = req.body;
@@ -27,6 +41,19 @@ router.post('/create', (req,res) =>{
             return res.send(data);
         }); //other way  Users.create(req.body);
     }); 
+});
+*/
+
+//same function using async
+router.post('/create', async (req,res) =>{
+    const {email, password} = req.body;
+
+    if(!email || !password) return res.send({error:'Needed email and password'})
+    try{
+        
+    }catch (err){
+        
+    }
 });
 
 router.post('/auth', (req,res) => {
@@ -55,6 +82,7 @@ router.get('/delete', (req,res) =>{
     Users.findByIdAndDelete(req.query.id, (err,data) =>{
         if(err) return res.send({error: 'unsuccesfuly delete user id:'+req.query.id});
         
+        //return res.send(data); //return user deleted
         return res.send({ message:'User succesfuly deleted!', idDeleted: req.params.id});
     });
 });

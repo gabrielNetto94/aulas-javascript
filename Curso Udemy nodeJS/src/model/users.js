@@ -9,6 +9,7 @@ const UserSchema = new Schema({
     created: { type: Date, default: Date.now }
 });
 
+/*  not async
 UserSchema.pre('save', function(next){
     let user = this;
     if(!user.isModified('password')) return next();
@@ -18,5 +19,16 @@ UserSchema.pre('save', function(next){
         return next(); //continue 
     });
 });
+*/
+//same function using async
+UserSchema.pre('save', async function(next){
+    let user = this;
+    if(!user.isModified('password')) return next();
+
+    user.password = await bcrypt.hash(user.password, 10);
+    return next(); //continue 
+});
+
+
 
 module.exports = mongoose.model('User',UserSchema);
