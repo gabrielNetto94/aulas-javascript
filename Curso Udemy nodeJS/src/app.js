@@ -1,7 +1,7 @@
 const express = require('express');
-const app  = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const app  = express();
 
 //connection database
 const url = 'mongodb+srv://admin:admin@cluster0-lbokr.mongodb.net/test?retryWrites=true&w=majority';
@@ -23,6 +23,7 @@ mongoose.connection.on('connected',() =>{
 });
 
 //bodyParser to parser request by POST
+/*
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -31,6 +32,10 @@ const usersRoute = require('./routes/users.js');
 
 app.use('/', indexRoute);
 app.use('/users',usersRoute);
+*/
+app.get('/',(req,res) => {
+    return res.send({message: 'olá'});
+});
 
 app.listen(3000);
 

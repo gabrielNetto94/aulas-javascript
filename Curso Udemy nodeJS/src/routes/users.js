@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../model/users');
+const bcrypt = require('bcrypt');
 
 router.get('/',(req,res) =>{
     Users.find({},(err,data)=>{
@@ -26,6 +27,27 @@ router.post('/create', (req,res) =>{
             return res.send(data);
         }); //other way  Users.create(req.body);
     }); 
+});
+
+router.post('/auth', (req,res) => {
+    const {email, password} = req.body;
+
+    if(!email || !password) return res.send({error: "insufficient data"});
+    
+    Users.findOne({email},(err,data) => {
+        if(err) return res.send({error: "error to find user!"});
+
+        if(!data) return res.send({error: "user don't registred!"});
+
+        bcrypt.compare(password,data.password, (err,same) => {
+
+            if(!same) return res.send({error: "password wrong!"});
+
+            data.password = undefined;
+            return res.send(data);
+        });      
+
+    }).select('+password');//".select('+password')" = force findOne to return the password
 });
 
 router.get('/delete', (req,res) =>{

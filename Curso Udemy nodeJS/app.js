@@ -26,8 +26,8 @@ mongoose.connection.on('connected',() =>{
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-const indexRoute = require('./routes/index.js');
-const usersRoute = require('./routes/users.js');
+const indexRoute = require('./src/routes/index.js');
+const usersRoute = require('./src/routes/users.js');
 
 app.use('/', indexRoute);
 app.use('/users',usersRoute);
